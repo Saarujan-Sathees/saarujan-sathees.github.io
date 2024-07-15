@@ -1,0 +1,58 @@
+name: Update Projects JSON
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Fetch Repos and Languages
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            
+            // 1. Fetch all public repos
+            const { data: repos } = await github.rest.repos.listForUser({
+              username: 'Saarujan-Sathees',
+              type: 'owner',
+              sort: 'updated'
+            });
+
+            const combinedData = [];
+
+            for (const repo of repos) {
+              if (repo.name === 'Saarujan-Sathees') continue;
+
+              // 2. Fetch languages for this specific repo
+              const { data: languages } = await github.rest.repos.listLanguages({
+                owner: 'Saarujan-Sathees',
+                repo: repo.name
+              });
+
+              combinedData.push({
+                name: repo.name == "saarujan-sathees.github.io" ? "Portfolio Website" : repo.name,
+                html_url: repo.html_url,
+                description: repo.description,
+                languages: Object.keys(languages),
+                updated_at: repo.updated_at
+              });
+            }
+
+            fs.writeFileSync('projects.json', JSON.stringify(combinedData, null, 2));
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add projects.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update projects.json with languages" && git push)

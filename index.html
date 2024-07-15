@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Saarujan Sathees</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Saarujan Sathees - A first year CS student at the University of Waterloo pursuing opportunities in computer graphics, design, and more.">
+    <link rel="shortcut icon" type="image/png" href="Media/Favicon.ico">
+    <link preconnect rel="stylesheet" href="stylesheet.css">
+    <script src="app.js"></script>
+</head> 
+
+<body>
+    <div id="app">
+        <div id="links">
+            <a aria-label="GitHub" href="https://github.com/Saarujan-Sathees" class="iconURL">
+                <img height="25" width="25" class="icon" data-src="Media/GitHub Logo.png" alt="GitHub Profile">
+            </a>
+            <a aria-label="LinkedIn" href="https://www.linkedin.com/in/saarujan-sathees/" class="iconURL">
+                <img height="25" width="25" class="icon" data-src="Media/LinkedIn Logo.png" alt="LinkedIn Profile">
+            </a>
+            <a aria-label="Email" href="mailto:saarujan.sathees@uwaterloo.ca" class="iconURL">
+                <img height="25" width="25" class="icon" data-src="Media/Gmail Logo.png" alt="Email">
+            </a>
+        </div>
+        <header id="logo" style="animation: 4000ms normal both 1 startAnimation cubic-bezier(0.3, 0.01, 0, 0.99) !important"></header>
+        <div id="eclipse" style="animation: 4000ms normal both 1 startAnimation cubic-bezier(0.3, 0.01, 0, 0.99) !important; transform-origin: center;">
+            <div class="rayOne ray"></div>
+            <div class="rayTwo ray"></div>
+            <div class="rayThree ray"></div>
+            <div class="rayMask"></div>
+            <div id="moon"></div>
+        </div>
+        <pre id="title" style="animation: 4000ms normal both 1 startAnimation cubic-bezier(0.3, 0.01, 0, 0.99) !important;"></pre>
+        <div class="fill"></div>
+        <div id="content">
+            <section id="aboutScroller">
+                <video muted preload="auto" class="videoBackground" id="aboutVideo">
+                    <source data-src="Media/Space Background.mp4" type="video/mp4;">
+                </video>
+                <div class="stickyContainer" id="about">
+                    <pre class="heading" id="aboutHeading">A B O U T</pre>
+                </div>
+                <p class="highlightedParagraph" id="aboutText">
+                    <span>Hey! I'm Saarujan Sathees, </span>
+                    <span>a Computer Science student </span>
+                    <span>at the University of Waterloo. </span>
+                    <span>I've previously interned 2x at BitGo as a SWE, </span>
+                    <span>where I focused on building new staking features, </span>
+                    <span>refactoring high-traffic code, and maintaining</span>
+                    <span>high reward data accuracy. </span>
+                    <span>Feel free to contact me through LinkedIn or email!</span>
+                </p>
+            </section>
+            <section id="projectsScroller">
+                <div class="stickyContainer" id="projects">
+                    <pre id="projectsTitle">PROJECTS</pre>
+                    <div id="projectRoadmap">
+                        <pre id="projectRoadmapPoint">o</pre>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer id="footer">
+            <pre class="heading" id="resumeHeading">R E S U M E</pre>
+            <a aria-label="Resume" id="resumeContainer" href="https://drive.google.com/file/d/1ldQPAWgKfN9pfrQ10128Em6pNopiVKxt/view">
+                <img id="resume" crossorigin="anonymous" alt="Resume">
+            </a>
+        </footer>  
+    </div>
+</body>
+</html>

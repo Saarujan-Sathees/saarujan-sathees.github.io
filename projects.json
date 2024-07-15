@@ -1,0 +1,97 @@
+[
+  {
+    "name": "Portfolio Website",
+    "html_url": "https://github.com/Saarujan-Sathees/saarujan-sathees.github.io",
+    "description": null,
+    "languages": [
+      "CSS",
+      "JavaScript",
+      "HTML"
+    ],
+    "updated_at": "2026-04-21T19:36:59Z"
+  },
+  {
+    "name": "CPU-Path-Tracer",
+    "html_url": "https://github.com/Saarujan-Sathees/CPU-Path-Tracer",
+    "description": "A simple path tracer that uses the CPU to render 3D scenes",
+    "languages": [
+      "C++",
+      "HTML",
+      "C"
+    ],
+    "updated_at": "2026-03-25T00:41:48Z"
+  },
+  {
+    "name": "Browser-Dashboard",
+    "html_url": "https://github.com/Saarujan-Sathees/Browser-Dashboard",
+    "description": "Dashboard-type New Tab Page extension, which displays the latest releases on Einthusan, a movie-streaming service, as well as recent emails under a certain tag.",
+    "languages": [
+      "JavaScript",
+      "CSS",
+      "HTML"
+    ],
+    "updated_at": "2025-05-25T21:25:45Z"
+  },
+  {
+    "name": "LooGuessr",
+    "html_url": "https://github.com/Saarujan-Sathees/LooGuessr",
+    "description": "Hack The North 2024",
+    "languages": [
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS"
+    ],
+    "updated_at": "2024-09-17T00:28:54Z"
+  },
+  {
+    "name": "WebGPU-Renderer",
+    "html_url": "https://github.com/Saarujan-Sathees/WebGPU-Renderer",
+    "description": "Website built for playing around with WebGPU features. Contains a 3D triangle-mesh terrain generator, somewhat realistic grass animation with an LOD implementation and more.",
+    "languages": [
+      "JavaScript",
+      "WGSL",
+      "CSS",
+      "HTML"
+    ],
+    "updated_at": "2024-07-18T20:50:00Z"
+  },
+  {
+    "name": "File-Server",
+    "html_url": "https://github.com/Saarujan-Sathees/File-Server",
+    "description": "A simple file-sharing server which allows users to store files on a server, and give certain users access to it. Only works with files that only contain ASCII characters currently.",
+    "languages": [
+      "Java"
+    ],
+    "updated_at": "2024-07-12T21:51:54Z"
+  },
+  {
+    "name": "PPM-Viewer",
+    "html_url": "https://github.com/Saarujan-Sathees/PPM-Viewer",
+    "description": "A webpage that allows users to view PPM files from their devices.",
+    "languages": [
+      "HTML"
+    ],
+    "updated_at": "2024-07-12T21:51:31Z"
+  },
+  {
+    "name": "Huffman-Compression",
+    "html_url": "https://github.com/Saarujan-Sathees/Huffman-Compression",
+    "description": "A binary implementation of the Huffman Tree Encoding algorithm, as a data stream.",
+    "languages": [
+      "C++"
+    ],
+    "updated_at": "2023-11-17T03:11:46Z"
+  },
+  {
+    "name": "Code-Editor",
+    "html_url": "https://github.com/Saarujan-Sathees/Code-Editor",
+    "description": "An online page which should allow you to edit code, and should be able to display more types of files and such in the future; based off of VSCode",
+    "languages": [
+      "JavaScript",
+      "CSS",
+      "HTML"
+    ],
+    "updated_at": "2023-05-30T02:30:13Z"
+  }
+]
