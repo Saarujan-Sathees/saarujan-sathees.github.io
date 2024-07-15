@@ -6,18 +6,8 @@
 }
 
 @font-face {
-    font-family: "Equinox Bold";
-    src: url("Fonts/Equinox Bold.woff");
-}
-
-@font-face {
     font-family: "Gabarito";
     src: url("Fonts/Gabarito.ttf");
-}
-
-@font-face {
-    font-family: "Inter Tight";
-    src: url("Fonts/Inter Tight.ttf");
 }
 
 /*#endregion*/
@@ -25,7 +15,6 @@
 /*#region Variables*/
 :root {
     --background-color: 0 0 0;
-    --scrollbar-color: 30 30 30;
 
     /*Purple*/
     --ray-color: 150 40 220;
@@ -91,20 +80,6 @@
     100% {
         opacity: 0.3;
         transform: rotateZ(60deg);
-    }
-}
-
-@keyframes eclipseScrollRotation {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    6% {
-        transform: rotate(70deg);
-    }
-
-    100% {
-        transform: rotate(70deg);
     }
 }
 
