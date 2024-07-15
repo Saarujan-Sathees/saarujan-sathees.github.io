@@ -249,11 +249,13 @@ function autopauseRayAnimations() {
 function loadMedia() {
     let images = document.getElementsByTagName("img");
     for (let i = 0; i < images.length; ++i) {
+        console.log(images[i].dataset.src);
         loadCache(images[i], location.href + '/' + images[i].dataset.src);
     }
 
     let videos = document.getElementsByTagName("video");
     for (let i = 0; i < videos.length; ++i) {
+        console.log(images[i].dataset.src);
         loadCache(videos[i], location.href + '/' + videos[i].dataset.src);
     }
 }
