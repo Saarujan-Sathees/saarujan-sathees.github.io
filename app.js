@@ -21,17 +21,14 @@ function animateFrames(time) {
 }
 
 async function loadCache(element, url) {
-    if (cache == null) {
-        cache = await caches.open("siteCache");
-    }
+    if (cache == null) cache = await caches.open("siteCache");
 
     const res = await cache.match(url);
-
     if (res == undefined) {
         element.src = url;
         cache.add(url);
     } else {
-        element.src = URL.createObjectURL(await (await cache.match(url)).blob());
+        element.src = URL.createObjectURL(await res.blob());
     }
 }
 
