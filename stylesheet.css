@@ -27,6 +27,12 @@
     --moon-shadow-color: 255 200 150;
 }
 
+@property --rayGlow {
+    syntax: '<percentage>';
+    initial-value: 65%;
+    inherits: false;
+}
+
 /*#endregion*/
 
 /*#region Animations*/
@@ -48,18 +54,15 @@
 
 @keyframes rayBrightness {
     0% {
-        background: radial-gradient(ellipse at 50% 50%, rgb(var(--ray-color) / 0%) 42%, 
-                                    rgb(var(--background-color)) 62%) 0% 0%/100% 100% no-repeat;
+        --rayGlow: 62%;
     }
 
     50% {
-        background: radial-gradient(ellipse at 50% 50%, rgb(var(--ray-color) / 0%) 50%, 
-                                    rgb(var(--background-color)) 70%) 0% 0%/100% 100% no-repeat;
+        --rayGlow: 70%;
     }
 
     100% {
-        background: radial-gradient(ellipse at 50% 50%, rgb(var(--ray-color) / 0%) 42%, 
-                                    rgb(var(--background-color)) 62%) 0% 0%/100% 100% no-repeat;
+        --rayGlow: 62%;
     }
 }
 
