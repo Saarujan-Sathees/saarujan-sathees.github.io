@@ -21,7 +21,11 @@ function animateFrames(time) {
 }
 
 async function loadCache(element, url) {
-    if (cache == null) cache = await caches.open("siteCache");
+    if (cache == null) {
+        await caches.delete("siteCache")
+        cache = await caches.open("siteCache");
+    }
+
     const res = await cache.match(url);
 
     if (res == undefined) {
@@ -246,12 +250,12 @@ function autopauseRayAnimations() {
 function loadMedia() {
     let images = document.getElementsByTagName("img");
     for (let i = 0; i < images.length; ++i) {
-        loadCache(images[i], images[i].dataset.src);
+        loadCache(images[i], location.href + '/' + images[i].dataset.src);
     }
 
     let videos = document.getElementsByTagName("video");
     for (let i = 0; i < videos.length; ++i) {
-        loadCache(videos[i], videos[i].dataset.src);
+        loadCache(videos[i], location.href + '/' + videos[i].dataset.src);
     }
 }
 
