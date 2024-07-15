@@ -22,7 +22,6 @@ function animateFrames(time) {
 
 async function loadCache(element, url) {
     if (cache == null) {
-        await caches.delete("siteCache")
         cache = await caches.open("siteCache");
     }
 
