@@ -1,4 +1,4 @@
-let app, scrollTop = 0;
+let app, scrollTop = 0, cache = null;
 const ANIMATION_SMOOTHNESS = 100;
 let THRESHOLDS = [], FRAME_ANIMATIONS = [];
 let aboutInfo = { minHeight: 0, range: 1, video: null };
@@ -18,6 +18,18 @@ function animateFrames(time) {
     }
 
     requestAnimationFrame(animateFrames);
+}
+
+async function loadCache(element, url) {
+    if (cache == null) cache = await caches.open("siteCache");
+    const res = await cache.match(url);
+
+    if (res == undefined) {
+        element.src = url;
+        cache.add(url);
+    } else {
+        element.src = URL.createObjectURL(await (await cache.match(url)).blob());
+    }
 }
 
 async function typeTitle() {
@@ -231,7 +243,20 @@ function autopauseRayAnimations() {
     observer.observe(document.getElementById("eclipse"));
 }
 
+function loadMedia() {
+    let images = document.getElementsByTagName("img");
+    for (let i = 0; i < images.length; ++i) {
+        loadCache(images[i], images[i].dataset.src);
+    }
+
+    let videos = document.getElementsByTagName("video");
+    for (let i = 0; i < videos.length; ++i) {
+        loadCache(videos[i], videos[i].dataset.src);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
+    loadMedia();
     initThresholds();
     app = document.getElementById("app");
     projectInfo.container = document.getElementById("projects");
