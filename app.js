@@ -129,26 +129,30 @@ function initThresholds() {
 
 async function fetchProjects() {
     const data = await (await fetch("https://api.github.com/users/Saarujan-Sathees/repos", { 
-        headers: { "User-Agent": "Saarujan-Sathees" }
+        headers: { "User-Agent": "saarujan-sathees.github.io" }
     })).json();
-    const minOffset = -70000, range = minOffset - 4200, dir = [ "left", "right" ];
+    const minOffset = -70000, maxOffset = 2000, range = minOffset - 4200, dir = [ "left", "right" ];
     const skills = document.createElement("pre");
     skills.classList.add("projectHeader");
     skills.textContent = "Skills";
     projectInfo.range = projectInfo.container.parentElement.clientHeight - projectInfo.container.clientHeight;
-    let projects = [], opacityOffsets = [], offsets = [], langData, tile, title, description, languages, tileNumber = 1;
+    let projects = [], offsets = [], langData, tile, title, description, languages;
 
     for (let i = 0; i < data.length; ++i) {
-        if (data[i].name == "Saarujan-Sathees") continue;
+        if (data[i].name == "Saarujan-Sathees") data.splice(i, 1);
+        if (data[i].name == "saarujan-sathees.github.io") data[i].name = "Portfolio Website";
+    }
 
+    const offsetDist = (maxOffset - minOffset) / data.length;
+    for (let i = 0; i < data.length; ++i) {
         langData = Object.keys(await (await fetch(data[i].languages_url, { 
-            headers: { "User-Agent": "Saarujan-Sathees" }
+            headers: { "User-Agent": "saarujan-sathees.github.io" }
         })).json());
         
         tile = document.createElement("a");
         tile.href = data[i].html_url;
         tile.classList.add("projectTile");
-        tile.style[dir[tileNumber % 2]] = "16vw";
+        tile.style[dir[i % 2]] = "16vw";
 
         title = document.createElement("pre");
         title.classList.add("projectName");
@@ -174,10 +178,7 @@ async function fetchProjects() {
         tile.appendChild(languages);
         projectInfo.container.appendChild(tile);
         projects.push(tile);
-
-        opacityOffsets.push((tileNumber - 1) * 0.1);
-        offsets.push(minOffset + (tileNumber - 1) * 12000);
-        tileNumber++;
+        offsets.push(minOffset + i * offsetDist);
     }
 
     let percentage = 0, distance;
