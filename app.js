@@ -209,14 +209,14 @@ function autopauseRayAnimations() {
     function scrolling() {
         if (rayList[0].style.animationPlayState != "paused") {
             for (let i = 0; i < rayList.length; ++i) {
-                rayList[i].style.animationPlayState = "paused";
+                rayList[j].style.animation = "none";
             }
         }
     }
 
     function scrollEnd() {
         for (let i = 0; i < rayList.length; ++i) {
-            rayList[i].style.animationPlayState = "running";
+            rayList[j].style.animation = "";
         }
     }
 
@@ -226,13 +226,13 @@ function autopauseRayAnimations() {
                 app.removeEventListener("scroll", scrolling);
                 app.removeEventListener("scrollend", scrollEnd);
                 for (let j = 0; j < rayList.length; ++j) {
-                    rayList[j].style.animationPlayState = "paused";
+                    rayList[j].style.animation = "none";
                 }
             } else {
                 app.addEventListener("scroll", scrolling, { passive: true });
                 app.addEventListener("scrollend", scrollEnd, { passive: true });
                 for (let j = 0; j < rayList.length; ++j) {
-                    rayList[j].style.animationPlayState = "running";
+                    rayList[j].style.animation = "";
                 }
             }
         }
