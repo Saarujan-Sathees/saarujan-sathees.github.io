@@ -431,7 +431,7 @@ span {
 #projectRoadmap {
     position: absolute;
     width: 4px;
-    height: 45vh;
+    height: 50vh;
     bottom: 0;
     left: calc(50vw - 2px);
     background: white;
@@ -439,17 +439,15 @@ span {
 }
 
 #projectRoadmapPoint {
-    font-size: 10vh;
-    color: white;
     position: absolute;
     height: 10vh;
     width: 3vw;
-    left: 48.5vw;
     margin: 0;
-    font-family: "Gabarito";
-    position: absolute;
-    bottom: 0;
-    transform: rotateX(45deg) translateZ(21px);
+    font-size: 7vh;
+    font-family: "Equinox";
+    font-weight: bold;
+    color: white;
+    transform: rotateX(60deg) translate3d(-20px, 0, 44px);
 }
 
 /*#endregion*/
