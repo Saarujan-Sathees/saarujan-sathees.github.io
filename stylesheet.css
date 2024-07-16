@@ -430,12 +430,26 @@ span {
 
 #projectRoadmap {
     position: absolute;
-    bottom: 0;
-    left: 49.5vw;
-    width: 0.5vw;
+    width: 4px;
     height: 45vh;
+    bottom: 0;
+    left: calc(50vw - 2px);
     background: white;
     transform: rotateX(90deg) scaleY(200);
+}
+
+#projectRoadmapPoint {
+    font-size: 10vh;
+    color: white;
+    position: absolute;
+    height: 10vh;
+    width: 3vw;
+    left: 48.5vw;
+    margin: 0;
+    font-family: "Gabarito";
+    position: absolute;
+    bottom: 0;
+    transform: rotateX(45deg) translateZ(21px);
 }
 
 /*#endregion*/
