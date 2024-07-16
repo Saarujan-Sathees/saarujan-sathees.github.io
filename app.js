@@ -143,7 +143,7 @@ async function animateProjectRoadmap() {
     const roadmap = document.getElementById("projectRoadmap");
     let observer = new IntersectionObserver(events => {
         for (let i = 0; i < events.length; ++i) {
-            roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * events[i].intersectionRatio}px)`;
+            roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * (1 - events[i].intersectionRatio)}px)`;
         }
     }, { root: app, threshold: THRESHOLDS });
 
