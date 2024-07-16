@@ -209,14 +209,14 @@ function autopauseRayAnimations() {
     function scrolling() {
         if (rayList[0].style.animationPlayState != "paused") {
             for (let i = 0; i < rayList.length; ++i) {
-                rayList[j].style.animation = "none";
+                rayList[i].style.animation = "none";
             }
         }
     }
 
     function scrollEnd() {
         for (let i = 0; i < rayList.length; ++i) {
-            rayList[j].style.animation = "";
+            rayList[i].style.animation = "";
         }
     }
 
