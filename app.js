@@ -252,7 +252,7 @@ function loadMedia() {
 
     let videos = document.getElementsByTagName("video");
     for (let i = 0; i < videos.length; ++i) {
-        loadCache(videos[i].firstElementChild, location.href + '/' + videos[i].firstElementChild.dataset.src);
+        loadCache(videos[i], location.href + '/' + videos[i].firstElementChild.dataset.src);
     }
 }
 
