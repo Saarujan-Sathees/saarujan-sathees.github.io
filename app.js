@@ -148,6 +148,7 @@ async function animateProjectRoadmap() {
 
         for (let i = 0; i < events.length; ++i) {
             roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * (1 - events[i].intersectionRatio)}px)`;
+            console.log(events[i].intersectionRatio);
             if (events[i].intersectionRatio == 1) 
                 roadmapInView = true;
             else 
