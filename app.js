@@ -142,14 +142,10 @@ function initThresholds() {
 let roadmapInView = false;
 async function animateProjectRoadmap() {
     const roadmap = document.getElementById("projectRoadmap");
-    let prevScroll = scrollTop;
-    let observer = new IntersectionObserver(events => {
-        if (prevScroll < scrollTop) {
-            prevScroll = scrollTop; 
-            return;
-        }
 
-        prevScroll = scrollTop;
+    let observer = new IntersectionObserver(events => {
+        if (projectInfo.offsetTop > 3000) return;
+
         for (let i = 0; i < events.length; ++i) {
             roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * (1 - events[i].intersectionRatio)}px)`;
             if (events[i].intersectionRatio == 1) 
