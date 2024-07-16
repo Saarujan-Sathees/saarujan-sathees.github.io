@@ -428,6 +428,16 @@ span {
     color: rgb(var(--ray-color));
 }
 
+#projectRoadmap {
+    position: absolute;
+    bottom: 0;
+    left: 49.5vw;
+    width: 0.5vw;
+    height: 45vh;
+    background: white;
+    transform: rotateX(90deg) scaleY(200);
+}
+
 /*#endregion*/
 
 #cursor {
