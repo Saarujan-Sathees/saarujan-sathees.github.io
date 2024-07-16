@@ -429,12 +429,14 @@ span {
 }
 
 #projectRoadmap {
+    display: flex;
     position: absolute;
     width: 2px;
     height: 50vh;
     bottom: 0;
     left: calc(50vw - 1px);
     background: white;
+    align-items: center;
     transform: rotateX(90deg) scaleY(200);
 }
 
@@ -447,7 +449,8 @@ span {
     font-family: "Equinox";
     font-weight: bold;
     color: white;
-    transform: rotateX(60deg) translate3d(-18px, 0, 48px);
+    text-align: center;
+    transform: rotateX(60deg) translateZ(45px);
 }
 
 /*#endregion*/
