@@ -430,10 +430,10 @@ span {
 
 #projectRoadmap {
     position: absolute;
-    width: 4px;
+    width: 2px;
     height: 50vh;
     bottom: 0;
-    left: calc(50vw - 2px);
+    left: calc(50vw - 1px);
     background: white;
     transform: rotateX(90deg) scaleY(200);
 }
@@ -443,11 +443,11 @@ span {
     height: 10vh;
     width: 3vw;
     margin: 0;
-    font-size: 7vh;
+    font-size: 6vh;
     font-family: "Equinox";
     font-weight: bold;
     color: white;
-    transform: rotateX(60deg) translate3d(-20px, 0, 44px);
+    transform: rotateX(60deg) translate3d(-18px, 0, 48px);
 }
 
 /*#endregion*/

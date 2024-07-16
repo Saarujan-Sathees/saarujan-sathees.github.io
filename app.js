@@ -145,7 +145,7 @@ async function animateProjectRoadmap() {
         for (let i = 0; i < events.length; ++i) {
             roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * (1 - events[i].intersectionRatio)}px)`;
         }
-    }, { root: app, threshold: THRESHOLDS });
+    }, { root: app, rootMargin: "-40% 0px 0px 0px", threshold: THRESHOLDS });
 
     observer.observe(projectInfo.container);    
 }
@@ -208,6 +208,7 @@ async function fetchProjects() {
     let percentage = 0, distance;
     queueFrame(() => {
         percentage = Math.min(1, Math.max(0, projectInfo.offsetTop / projectInfo.range));
+        roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * percentage}px)`;
         for (let i = 0; i < projects.length; ++i) {
             distance = offsets[i] + 90000 * percentage;
             projects[i].style.opacity = Math.min(1, 1 - ((distance - 4200) / range));
