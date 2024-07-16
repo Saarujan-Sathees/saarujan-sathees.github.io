@@ -151,6 +151,7 @@ async function animateProjectRoadmap() {
 }
 
 async function fetchProjects() {
+    animateProjectRoadmap();
     const data = await (await fetch("https://api.github.com/users/Saarujan-Sathees/repos", { 
         headers: { "User-Agent": "saarujan-sathees.github.io" }
     })).json();
