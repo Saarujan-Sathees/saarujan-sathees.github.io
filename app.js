@@ -161,7 +161,7 @@ async function fetchProjects() {
         headers: { "User-Agent": "saarujan-sathees.github.io" }
     })).json();
     const minOffset = -70000, maxOffset = 2000, range = minOffset - 4200, dir = [ "left", "right" ];
-    const skills = document.createElement("pre");
+    const skills = document.createElement("pre"), roadmap = document.getElementById("projectRoadmap");
     skills.classList.add("projectHeader");
     skills.textContent = "Skills";
     projectInfo.range = projectInfo.container.parentElement.clientHeight - projectInfo.container.clientHeight;
