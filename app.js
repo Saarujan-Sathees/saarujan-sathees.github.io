@@ -153,7 +153,7 @@ async function animateProjectRoadmap() {
             else 
                 roadmapInView = false;
         }
-    }, { root: app, rootMargin: "-70% 0px 0px 0px", threshold: THRESHOLDS });
+    }, { root: app, rootMargin: "0px 0px -70% 0px", threshold: THRESHOLDS });
 
     observer.observe(projectInfo.container);    
 }
