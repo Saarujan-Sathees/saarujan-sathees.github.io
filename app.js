@@ -231,6 +231,7 @@ function autopauseRayAnimations() {
     let elements = document.getElementById("eclipse").children;
     let observer = new IntersectionObserver(events => {
         for (let i = 0; i < events.length; ++i) {
+            console.log(events[i].intersectionRatio)
             if (events[i].intersectionRatio < 0.01) {
                 elements[0].parentElement.style.animation = "none";
                 for (let j = 0; j < elements.length; ++j) {
@@ -243,7 +244,7 @@ function autopauseRayAnimations() {
                 }
             }
         }
-    }, { threshold: THRESHOLDS });
+    }, { threshold: [0.005, 0.015] });
 
     observer.observe(elements[0].parentElement);
 }
