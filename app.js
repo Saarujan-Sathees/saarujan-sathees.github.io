@@ -231,14 +231,11 @@ function autopauseRayAnimations() {
     let elements = document.getElementById("eclipse").children;
     let observer = new IntersectionObserver(events => {
         for (let i = 0; i < events.length; ++i) {
-            console.log(events[i].intersectionRatio)
             if (events[i].intersectionRatio < 0.01) {
-                elements[0].parentElement.style.animationPlayState = "paused";
                 for (let j = 0; j < elements.length; ++j) {
                     elements[j].style.animationPlayState = "paused";
                 }
             } else {
-                elements[0].parentElement.style.animationPlayState = "";
                 for (let j = 0; j < elements.length; ++j) {
                     elements[j].style.animationPlayState = "";
                 }
