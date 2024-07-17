@@ -148,7 +148,7 @@ async function animateProjectRoadmap() {
         if (projectInfo.offsetTop > 3000) return;
 
         for (let i = 0; i < events.length; ++i) {
-            roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * (1 - events[i].intersectionRatio / viewSize)}px)`;
+            roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${280 * (1 - events[i].intersectionRatio / viewSize)}px)`;
             if (events[i].intersectionRatio >= viewSize) 
                 roadmapInView = true;
             else 
@@ -201,6 +201,7 @@ async function fetchProjects() {
         for (let i = 0; i < langData.length; ++i) {
             let lang = document.createElement("li");
             lang.classList.add("projectDescription");
+            lang.style.width = "fit-content";
             lang.textContent = langData[i];
             languages.appendChild(lang);
         }
@@ -217,7 +218,7 @@ async function fetchProjects() {
     let percentage = 0, distance;
     queueFrame(() => {
         percentage = Math.min(1, Math.max(0, projectInfo.offsetTop / projectInfo.range));
-        if (roadmapInView) roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * percentage}px)`;
+        if (roadmapInView) roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${280 * percentage}px)`;
         for (let i = 0; i < projects.length; ++i) {
             distance = offsets[i] + 90000 * percentage;
             projects[i].style.opacity = Math.min(1, 1 - ((distance - 4200) / range));
