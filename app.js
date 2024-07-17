@@ -148,8 +148,7 @@ async function animateProjectRoadmap() {
         if (projectInfo.offsetTop > 3000) return;
 
         for (let i = 0; i < events.length; ++i) {
-            roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * (1 - events[i].intersectionRatio)}px)`;
-            console.log(events[i].intersectionRatio);
+            roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * (1 - events[i].intersectionRatio / viewSize)}px)`;
             if (events[i].intersectionRatio >= viewSize) 
                 roadmapInView = true;
             else 
