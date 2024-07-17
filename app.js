@@ -142,6 +142,7 @@ function initThresholds() {
 let roadmapInView = false;
 async function animateProjectRoadmap() {
     const roadmap = document.getElementById("projectRoadmap");
+    const viewSize = 0.25;
 
     let observer = new IntersectionObserver(events => {
         if (projectInfo.offsetTop > 3000) return;
@@ -149,12 +150,12 @@ async function animateProjectRoadmap() {
         for (let i = 0; i < events.length; ++i) {
             roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${230 * (1 - events[i].intersectionRatio)}px)`;
             console.log(events[i].intersectionRatio);
-            if (events[i].intersectionRatio == 1) 
+            if (events[i].intersectionRatio >= viewSize) 
                 roadmapInView = true;
             else 
                 roadmapInView = false;
         }
-    }, { root: app, rootMargin: "0px 0px -70% 0px", threshold: THRESHOLDS });
+    }, { root: app, rootMargin: `0px 0px -${(1 - viewSize) * 100}% 0px`, threshold: THRESHOLDS });
 
     observer.observe(projectInfo.container);    
 }
