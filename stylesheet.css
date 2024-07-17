@@ -436,7 +436,7 @@ span {
     bottom: 0;
     left: calc(50vw - 1px);
     background: white;
-    align-items: center;
+    justify-content: center;
     transform: rotateX(90deg) scaleY(200);
 }
 
