@@ -228,42 +228,24 @@ async function fetchProjects() {
 }
 
 function autopauseRayAnimations() {
-    let rayList = document.getElementsByClassName("ray");
-    function scrolling() {
-        if (rayList[0].style.animationPlayState != "paused") {
-            for (let i = 0; i < rayList.length; ++i) {
-                rayList[i].style.animation = "none";
-            }
-        }
-    }
-
-    function scrollEnd() {
-        for (let i = 0; i < rayList.length; ++i) {
-            rayList[i].style.animation = "";
-        }
-    }
-
+    let elements = document.getElementById("eclipse").children;
     let observer = new IntersectionObserver(events => {
         for (let i = 0; i < events.length; ++i) {
-            if (events[i].intersectionRatio < 0.005) {
-                //app.removeEventListener("scroll", scrolling);
-                app.removeEventListener("scrollend", scrollEnd);
-                for (let j = 0; j < rayList.length; ++j) {
-                    rayList[j].style.animation = "none";
+            if (events[i].intersectionRatio < 0.01) {
+                elements[0].parentElement.style.animation = "none";
+                for (let j = 0; j < elements.length; ++j) {
+                    elements[j].style.animation = "none";
                 }
             } else {
-                app.addEventListener("scroll", scrolling, { passive: true });
-                app.addEventListener("scrollend", scrollEnd, { passive: true });
-                for (let j = 0; j < rayList.length; ++j) {
-                    rayList[j].style.animation = "";
+                elements[0].parentElement.style.animation = "";
+                for (let j = 0; j < elements.length; ++j) {
+                    elements[j].style.animation = "";
                 }
             }
         }
     }, { threshold: [0, 0.005, 0.01] });
 
-    //app.addEventListener("scroll", scrolling, { passive: true });
-    //app.addEventListener("scrollend", scrollEnd, { passive: true });
-    observer.observe(document.getElementById("eclipse"));
+    observer.observe(elements[0].parentElement);
 }
 
 function loadMedia() {
