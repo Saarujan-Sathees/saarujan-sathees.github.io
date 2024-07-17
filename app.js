@@ -243,7 +243,7 @@ function autopauseRayAnimations() {
                 }
             }
         }
-    }, { threshold: [0, 0.005, 0.01] });
+    }, { threshold: THRESHOLDS });
 
     observer.observe(elements[0].parentElement);
 }
