@@ -121,6 +121,7 @@ html, body {
     padding: 0;
     scroll-behavior: smooth;
     background-color: rgb(var(--background-color));
+    overflow: hidden;
 }
 
 /*#region Scroll Bar*/
@@ -139,7 +140,7 @@ html, body {
     height: 88vh !important;
     width: 100vw;
     padding: 0;
-    margin-top: 12vh;
+    margin: 12vh 0 0 0;
     overflow-y: scroll;
     scroll-timeline-name: --appScroll;
 }

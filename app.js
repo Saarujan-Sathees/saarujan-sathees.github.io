@@ -142,7 +142,7 @@ function initThresholds() {
 let roadmapInView = false;
 async function animateProjectRoadmap() {
     const roadmap = document.getElementById("projectRoadmap");
-    const viewSize = 0.25;
+    const viewSize = 0.4;
 
     let observer = new IntersectionObserver(events => {
         if (projectInfo.offsetTop > 3000) return;
@@ -246,7 +246,7 @@ function autopauseRayAnimations() {
     let observer = new IntersectionObserver(events => {
         for (let i = 0; i < events.length; ++i) {
             if (events[i].intersectionRatio < 0.005) {
-                app.removeEventListener("scroll", scrolling);
+                //app.removeEventListener("scroll", scrolling);
                 app.removeEventListener("scrollend", scrollEnd);
                 for (let j = 0; j < rayList.length; ++j) {
                     rayList[j].style.animation = "none";
@@ -261,8 +261,8 @@ function autopauseRayAnimations() {
         }
     }, { threshold: [0, 0.005, 0.01] });
 
-    app.addEventListener("scroll", scrolling, { passive: true });
-    app.addEventListener("scrollend", scrollEnd, { passive: true });
+    //app.addEventListener("scroll", scrolling, { passive: true });
+    //app.addEventListener("scrollend", scrollEnd, { passive: true });
     observer.observe(document.getElementById("eclipse"));
 }
 
