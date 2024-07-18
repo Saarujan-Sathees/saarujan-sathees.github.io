@@ -388,6 +388,8 @@ span {
     width: 4vw;
     left: 3vw;
     top: 10vh;
+    margin: 0;
+    padding: 0;
     font-family: 'Equinox';
     font-size: 6vh;
     letter-spacing: 3vh;
