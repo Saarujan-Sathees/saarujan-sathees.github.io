@@ -382,6 +382,22 @@ span {
     overflow: hidden;
 }
 
+#projectsTitle {
+    position: absolute;
+    height: 68vh;
+    width: 4vw;
+    left: 3vw;
+    top: 10vh;
+    font-family: 'Equinox';
+    font-size: 6vh;
+    letter-spacing: 3vh;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
 .projectTile {
     position: absolute;
     width: 22vw;
@@ -451,7 +467,7 @@ span {
     font-weight: bold;
     color: white;
     text-align: center;
-    transform: rotateX(60deg) translateZ(47px);
+    transform: rotateX(60deg) translateZ(45px);
 }
 
 /*#endregion*/
