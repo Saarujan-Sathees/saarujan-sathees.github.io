@@ -355,10 +355,11 @@ span {
     width: 45vw;
     height: 68vw;
     margin: 0 4vw 0 1vw;
+    cursor: pointer;
 }
 
 #resume {
-    width: 48vw;
+    width: 45vw;
     height: 68vw;
     object-fit: cover;
     object-position: top;
