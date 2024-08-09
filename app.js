@@ -259,14 +259,10 @@ function loadMedia() {
 }
 
 async function loadResume() {
-    const res = await fetch("https://drive.google.com/file/d/14Wo6Dm9EhNlMhBvdfG3fIlODFQ6h4q_k/preview");
-    let previewURL = await res.text();
-    const start = previewURL.indexOf("blob:https://drive.google.com");
-    console.log(previewURL);
-    console.log(start + "Index");
-    previewURL = previewURL.substring(start, previewURL.indexOf('"', start));
-
-    console.log(previewURL);
+    const resumeEmbed = document.getElementById("resume");
+    const img = resumeEmbed.getElementsByClassName("ndfHFb-c4YZDc-cYSp0e-DARUcf-RJLb9c")[0].src;
+    
+    console.log(img);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
