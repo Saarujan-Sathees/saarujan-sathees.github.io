@@ -167,7 +167,7 @@ async function fetchProjects() {
 
     if (!req.ok && req.status < 200 || req.status > 299) {
         fetchProjects();
-        break;
+        return;
     }
 
     const data = await req.json();
