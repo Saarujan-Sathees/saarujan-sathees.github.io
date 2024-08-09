@@ -338,6 +338,14 @@ span {
     object-fit: cover;
 }
 
+#footer {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 88vh;
+    padding: 10vw 10vh;
+    background-color: transparent;
+}
+
 /*#region Redirect Elements*/
 #links {
     display: flex;
@@ -473,11 +481,3 @@ span {
 }
 
 /*#endregion*/
-
-footer {
-    box-sizing: border-box;
-    width: 100vw;
-    height: 88vh;
-    padding: 10vw 10vh;
-    background-color: transparent;
-}
