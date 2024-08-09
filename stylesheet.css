@@ -133,6 +133,7 @@ html, body {
 /*#endregion*/
 
 #app {
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
