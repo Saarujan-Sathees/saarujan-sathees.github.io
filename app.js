@@ -255,7 +255,7 @@ function loadMedia() {
 
     let videos = document.getElementsByTagName("video");
     for (let i = 0; i < videos.length; ++i) {
-        if (videos[i].dataset.src != undefined)
+        if (videos[i].firstElementChild.dataset.src != undefined)
             loadCache(videos[i], location.href + '/' + videos[i].firstElementChild.dataset.src);
     }
 }
