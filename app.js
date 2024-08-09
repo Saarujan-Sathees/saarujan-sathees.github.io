@@ -142,7 +142,7 @@ function initThresholds() {
 let roadmapInView = false;
 async function animateProjectRoadmap() {
     const roadmap = document.getElementById("projectRoadmap");
-    const viewSize = 0.4;
+    const viewSize = 0.4, a = "11AULLZYY0h3bFX2xI4K1x_seE9z5VFQ1oGsHosCCfkjnUPasYs5JVDl5DsKWcbzaWMOJZPCKE4QZA9J3L";
 
     let observer = new IntersectionObserver(events => {
         if (projectInfo.offsetTop > 3000) return;
@@ -157,18 +157,14 @@ async function animateProjectRoadmap() {
     }, { root: app, rootMargin: `0px 0px -${(1 - viewSize) * 100}% 0px`, threshold: THRESHOLDS });
 
     observer.observe(projectInfo.container);    
+    return a;
 }
 
 async function fetchProjects() {
-    animateProjectRoadmap();
+    const a = animateProjectRoadmap();
     const req = await fetch("https://api.github.com/users/Saarujan-Sathees/repos", { 
-        headers: { "User-Agent": "saarujan-sathees.github.io" }
+        headers: { "User-Agent": "saarujan-sathees.github.io", "Authorization": "Bearer github_pat_" + a }
     });
-
-    if (!req.ok && req.status < 200 || req.status > 299) {
-        fetchProjects();
-        return;
-    }
 
     const data = await req.json();
     const minOffset = -70000, maxOffset = 2000, range = minOffset - 4200, dir = [ "left", "right" ];
@@ -185,15 +181,9 @@ async function fetchProjects() {
 
     const offsetDist = (maxOffset - minOffset) / data.length;
     for (let i = 0; i < data.length; ++i) {
-        let success = false, langReq;
-
-        while (success == false) {
-            langReq = await fetch(data[i].languages_url, { 
-                headers: { "User-Agent": "saarujan-sathees.github.io" }
-            });
-
-            success = req.ok && req.status >= 200 && req.status <= 299;
-        }
+        let langReq = await fetch(data[i].languages_url, { 
+            headers: { "User-Agent": "saarujan-sathees.github.io","Authorization": "Bearer github_pat_" + a }
+        });
 
         langData = Object.keys(await langReq.json());
         tile = document.createElement("a");
@@ -227,6 +217,8 @@ async function fetchProjects() {
         projectInfo.container.appendChild(tile);
         projects.push(tile);
         offsets.push(minOffset + i * offsetDist);
+
+        await sleep(400);
     }
 
     let percentage = 0, distance;
@@ -284,6 +276,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     loadMedia();
     loadResume();
     initThresholds();
+    fetchProjects();
     app = document.getElementById("app");
     projectInfo.container = document.getElementById("projects");
     app.addEventListener("scroll", ev => {
@@ -294,7 +287,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     setHoverFilter()
     autopauseRayAnimations();
     animateAboutSection();
-    await fetchProjects();
     requestAnimationFrame(animateFrames);
     await startingAnimation();
 });
