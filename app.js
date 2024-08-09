@@ -260,7 +260,7 @@ function loadMedia() {
 
 async function loadResume() {
     const resumeEmbed = document.getElementById("resume");
-    const img = resumeEmbed.contentWindow.document.getElementsByClassName("ndfHFb-c4YZDc-cYSp0e-DARUcf-RJLb9c")[0];
+    const img = resumeEmbed.innerHTML;
     
     console.log(img);
 }
