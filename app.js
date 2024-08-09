@@ -266,7 +266,8 @@ function loadResume() {
 
 document.addEventListener("DOMContentLoaded", async () => {
     loadMedia();
-    loadResume();
+
+    document.getElementById("resume").onload = loadResume;
     initThresholds();
     app = document.getElementById("app");
     projectInfo.container = document.getElementById("projects");
