@@ -161,9 +161,16 @@ async function animateProjectRoadmap() {
 
 async function fetchProjects() {
     animateProjectRoadmap();
-    const data = await (await fetch("https://api.github.com/users/Saarujan-Sathees/repos", { 
+    const req = await fetch("https://api.github.com/users/Saarujan-Sathees/repos", { 
         headers: { "User-Agent": "saarujan-sathees.github.io" }
-    })).json();
+    });
+
+    if (!req.ok && req.status < 200 || req.status > 299) {
+        fetchProjects();
+        break;
+    }
+
+    const data = await req.json();
     const minOffset = -70000, maxOffset = 2000, range = minOffset - 4200, dir = [ "left", "right" ];
     const skills = document.createElement("pre"), roadmap = document.getElementById("projectRoadmap");
     skills.classList.add("projectHeader");
@@ -178,10 +185,17 @@ async function fetchProjects() {
 
     const offsetDist = (maxOffset - minOffset) / data.length;
     for (let i = 0; i < data.length; ++i) {
-        langData = Object.keys(await (await fetch(data[i].languages_url, { 
-            headers: { "User-Agent": "saarujan-sathees.github.io" }
-        })).json());
-        
+        let success = false, langReq;
+
+        while (success == false) {
+            langReq = await fetch(data[i].languages_url, { 
+                headers: { "User-Agent": "saarujan-sathees.github.io" }
+            });
+
+            success = req.ok && req.status >= 200 && req.status <= 299;
+        }
+
+        langData = Object.keys(await langReq.json());
         tile = document.createElement("a");
         tile.href = data[i].html_url;
         tile.classList.add("projectTile");
