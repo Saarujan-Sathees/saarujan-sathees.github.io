@@ -373,11 +373,8 @@ span {
     transition: filter 100ms linear;
 }
 
-.resumeContainer:hover {
+.resumeContainer:hover, #resume:hover {
     box-shadow: none;
-}
-
-#resume:hover {
     filter: none;
 }
 
