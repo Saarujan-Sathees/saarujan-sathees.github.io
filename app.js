@@ -249,12 +249,14 @@ function autopauseRayAnimations() {
 function loadMedia() {
     let images = document.getElementsByTagName("img");
     for (let i = 0; i < images.length; ++i) {
-        loadCache(images[i], location.href + '/' + images[i].dataset.src);
+        if (images[i].dataset.src != undefined)
+            loadCache(images[i], location.href + '/' + images[i].dataset.src);
     }
 
     let videos = document.getElementsByTagName("video");
     for (let i = 0; i < videos.length; ++i) {
-        loadCache(videos[i], location.href + '/' + videos[i].firstElementChild.dataset.src);
+        if (videos[i].dataset.src != undefined)
+            loadCache(videos[i], location.href + '/' + videos[i].firstElementChild.dataset.src);
     }
 }
 
