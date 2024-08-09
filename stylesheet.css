@@ -340,10 +340,14 @@ span {
 
 #footer {
     box-sizing: border-box;
+    display: flex;
     width: 100vw;
     height: 88vh;
     padding: 10vw 10vh;
     background-color: transparent;
+    color: white;
+    justify-content: center;
+    align-items: center;
 }
 
 /*#region Redirect Elements*/
