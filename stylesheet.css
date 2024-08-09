@@ -355,19 +355,30 @@ span {
     width: 45vw;
     height: 68vw;
     margin: 0 4vw 0 1vw;
+    border-radius: 5px;
+    box-shadow: inset 0 0 500px rgb(255 255 255 / 75%);
+    transition: box-shadow 100ms linear;
     cursor: pointer;
 }
 
 #resume {
+    position: relative;
     width: 45vw;
     height: 68vw;
+    z-index: -1;
+    border-radius: 5px;
     object-fit: cover;
     object-position: top;
-    filter: blur(1px);
+    filter: blur(2px) brightness(0.6);
+    transition: filter 100ms linear;
 }
 
 .resumeContainer:hover {
-    box-shadow: inset 0 0 200px 100px rgb(40 40 40 / 68%), 0 0 10px rgb(var(--ray-color) / 30%);
+    box-shadow: none;
+}
+
+#resume:hover {
+    filter: none;
 }
 
 /*#endregion*/
