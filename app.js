@@ -259,14 +259,10 @@ function loadMedia() {
 }
 
 async function loadResume() {
-    const resumeEmbed = document.getElementById("resume");
-    const img = resumeEmbed.innerHTML;
     
-    console.log(img);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    document.getElementById("resume").onload = loadResume();
     loadMedia();
     initThresholds();
     app = document.getElementById("app");
