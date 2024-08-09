@@ -321,6 +321,7 @@ span {
     font-family: "Equinox";
     font-size: 460%;
     text-align: center;
+    color: white;
     text-shadow: 0 0 4px rgba(255, 255, 255, 60%);
     pointer-events: none;
     justify-content: center;
@@ -343,11 +344,14 @@ span {
     display: flex;
     width: 100vw;
     height: 88vh;
-    padding: 10vw 10vh;
     background-color: transparent;
-    color: white;
     justify-content: center;
     align-items: center;
+}
+
+#resume {
+    width: 48vw;
+    height: 75vh;
 }
 
 /*#region Redirect Elements*/
