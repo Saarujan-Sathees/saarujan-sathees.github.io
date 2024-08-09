@@ -339,6 +339,7 @@ span {
     object-fit: cover;
 }
 
+/*#region Footer Styling*/
 #footer {
     box-sizing: border-box;
     display: flex;
@@ -353,6 +354,8 @@ span {
     width: 48vw;
     height: 75vh;
 }
+
+/*#endregion*/
 
 /*#region Redirect Elements*/
 #links {

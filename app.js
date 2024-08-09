@@ -261,8 +261,7 @@ function loadMedia() {
 async function loadResume() {
     const res = await fetch("https://drive.google.com/file/d/14Wo6Dm9EhNlMhBvdfG3fIlODFQ6h4q_k/view");
     let body = await res.text(), start = body.indexOf("src=\"https://drive.google.com/drive-viewer") + 5;
-    body = body.substring(start, body.indexOf("/>", start) - 1);
-    console.log(body);
+    document.getElementById("resume").style.backgroundImage = `url(${body.substring(start, body.indexOf("/>", start) - 1)})`;
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
