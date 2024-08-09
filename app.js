@@ -260,14 +260,14 @@ function loadMedia() {
 
 async function loadResume() {
     const resumeEmbed = document.getElementById("resume");
-    const img = resumeEmbed.getElementsByClassName("ndfHFb-c4YZDc-cYSp0e-DARUcf-RJLb9c")[0].src;
+    const img = resumeEmbed.getElementsByClassName("ndfHFb-c4YZDc-cYSp0e-DARUcf-RJLb9c")[0];
     
     console.log(img);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+    document.getElementById("resume").onload = loadResume();
     loadMedia();
-    loadResume();
     initThresholds();
     app = document.getElementById("app");
     projectInfo.container = document.getElementById("projects");
