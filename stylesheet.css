@@ -353,7 +353,7 @@ span {
 
 .resumeContainer {
     width: 45vw;
-    height: 68vw;
+    height: 68vh;
     margin: 0 4vw 0 1vw;
     border-radius: 5px;
     box-shadow: inset 0 0 500px rgb(255 255 255 / 75%);
@@ -364,7 +364,7 @@ span {
 #resume {
     position: relative;
     width: 45vw;
-    height: 68vw;
+    height: 68vh;
     z-index: -1;
     border-radius: 5px;
     object-fit: cover;
