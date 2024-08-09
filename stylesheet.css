@@ -369,12 +369,15 @@ span {
     border-radius: 5px;
     object-fit: cover;
     object-position: top;
-    filter: blur(2px) brightness(0.6);
+    filter: blur(2px) brightness(0.85);
     transition: filter 100ms linear;
 }
 
-.resumeContainer:hover, #resume:hover {
+.resumeContainer:hover {
     box-shadow: none;
+}
+
+.resumeContainer:hover > #resume:hover {
     filter: none;
 }
 
