@@ -259,11 +259,14 @@ function loadMedia() {
 }
 
 async function loadResume() {
-    
+    const res = await fetch("https://drive.google.com/file/d/14Wo6Dm9EhNlMhBvdfG3fIlODFQ6h4q_k/view");
+    let body = await res.text();
+    console.log(body);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
     loadMedia();
+
     initThresholds();
     app = document.getElementById("app");
     projectInfo.container = document.getElementById("projects");
