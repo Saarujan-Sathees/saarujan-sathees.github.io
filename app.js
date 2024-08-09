@@ -258,8 +258,15 @@ function loadMedia() {
     }
 }
 
+function loadResume() {
+    const resume = document.createElement("embed");// document.getElementById("resume");
+    let background = resume.getElementsByClassName("ndfHFb-c4YZDc-cYSp0e ndfHFb-c4YZDc-oKVyEf")[0];
+    background.style.background = `rgb(${getComputedStyle(document.documentElement).getPropertyValue("--background-color")})`;
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
     loadMedia();
+    loadResume();
     initThresholds();
     app = document.getElementById("app");
     projectInfo.container = document.getElementById("projects");
