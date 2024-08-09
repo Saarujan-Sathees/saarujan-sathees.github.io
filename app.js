@@ -262,6 +262,7 @@ async function loadResume() {
     const res = await fetch("https://drive.google.com/file/d/14Wo6Dm9EhNlMhBvdfG3fIlODFQ6h4q_k/preview");
     let previewURL = await res.text();
     const start = previewURL.indexOf("blob:https://drive.google.com");
+    console.log(previewURL);
     console.log(start + "Index");
     previewURL = previewURL.substring(start, previewURL.indexOf('"', start));
 
