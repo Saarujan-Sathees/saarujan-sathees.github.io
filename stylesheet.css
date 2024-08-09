@@ -377,7 +377,7 @@ span {
     box-shadow: none;
 }
 
-.resumeContainer:hover > #resume:hover {
+.resumeContainer:hover > #resume {
     filter: none;
 }
 
