@@ -474,5 +474,10 @@ span {
 
 /*#endregion*/
 
-
-
+footer {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 88vh;
+    padding: 10vw 10vh;
+    background-color: transparent;
+}
