@@ -350,7 +350,7 @@ span {
     align-items: center;
 }
 
-#resume {
+.resumeContainer {
     width: 48vw;
     height: 75vh;
 }
