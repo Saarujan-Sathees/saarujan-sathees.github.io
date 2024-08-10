@@ -141,8 +141,6 @@ function initThresholds() {
 
 let roadmapInView = false;
 async function animateProjectRoadmap() {
-    let it = new Credential();
-    
     const roadmap = document.getElementById("projectRoadmap");
     const viewSize = 0.4;
 
