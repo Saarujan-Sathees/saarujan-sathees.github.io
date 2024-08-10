@@ -276,7 +276,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     loadMedia();
     loadResume();
     initThresholds();
-    fetchProjects();
     app = document.getElementById("app");
     projectInfo.container = document.getElementById("projects");
     app.addEventListener("scroll", ev => {
@@ -284,6 +283,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         projectInfo.offsetTop = projectInfo.container.offsetTop;
     }, { passive: true });
     
+    fetchProjects();
     setHoverFilter()
     autopauseRayAnimations();
     animateAboutSection();
