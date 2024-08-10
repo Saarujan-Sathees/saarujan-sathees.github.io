@@ -22,9 +22,9 @@
     --moon-shadow-color: 250 220 255;
 
     /*Orange*/
-    --ray-color: 250 140 0;
+    /*--ray-color: 250 140 0;
     --secondary-color: 235 60 0;
-    --moon-shadow-color: 255 200 150;
+    --moon-shadow-color: 255 200 150;*/
 }
 
 @property --rayGlow {
