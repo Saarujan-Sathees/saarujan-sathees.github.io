@@ -163,7 +163,7 @@ async function fetchProjects() {
     animateProjectRoadmap();
     const b = "thub_pat_11AULLZYY0h3bFX2xI4K1x_seE9z5VFQ1oGsHosCCfkjnUPasYs5JVDl5DsKWcbzaWMOJZPCKE4QZA9J3L";
     const req = await fetch("https://api.github.com/users/Saarujan-Sathees/repos", { 
-        headers: { "User-Agent": "saarujan-sathees.github.io", "Username": "Saarujan-Sathees", "Password": `gi${b}` }
+        headers: { "User-Agent": "saarujan-sathees.github.io", "Authorization": `gi${b}` }
     });
 
     const data = await req.json();
@@ -182,7 +182,7 @@ async function fetchProjects() {
     const offsetDist = (maxOffset - minOffset) / data.length;
     for (let i = 0; i < data.length; ++i) {
         let langReq = await fetch(data[i].languages_url, { 
-            headers: { "User-Agent": "saarujan-sathees.github.io", "Username": "Saarujan-Sathees", "Password": `git${b}` }
+            headers: { "User-Agent": "saarujan-sathees.github.io", "Authorization": `gi${b}` }
         });
 
         langData = Object.keys(await langReq.json());
