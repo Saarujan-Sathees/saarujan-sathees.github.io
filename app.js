@@ -141,6 +141,8 @@ function initThresholds() {
 
 let roadmapInView = false;
 async function animateProjectRoadmap() {
+    let it = new Credential();
+    
     const roadmap = document.getElementById("projectRoadmap");
     const viewSize = 0.4;
 
@@ -163,7 +165,7 @@ async function fetchProjects() {
     animateProjectRoadmap();
     const b = "jnUPasYs5JVDl5DsKWcbzaWMOJZPCKE4QZA9J3L", a = "11AULLZYY0h3bFX2xI4K1x_seE9z5VFQ1oGsHosCCfk";
     const req = await fetch("https://api.github.com/users/Saarujan-Sathees/repos", { 
-        headers: { "User-Agent": "saarujan-sathees.github.io", "Authorization": "Bearer github_pat_" + b + a }
+        headers: { "User-Agent": "saarujan-sathees.github.io", "Authorization": "token github_pat_" + b + a }
     });
 
     const data = await req.json();
@@ -182,7 +184,7 @@ async function fetchProjects() {
     const offsetDist = (maxOffset - minOffset) / data.length;
     for (let i = 0; i < data.length; ++i) {
         let langReq = await fetch(data[i].languages_url, { 
-            headers: { "User-Agent": "saarujan-sathees.github.io","Authorization": "Bearer github_pat_" + b + a }
+            headers: { "User-Agent": "saarujan-sathees.github.io","Authorization": "token github_pat_" + b + a }
         });
 
         langData = Object.keys(await langReq.json());
