@@ -351,7 +351,7 @@ span {
     align-items: center;
 }
 
-.resumeContainer {
+#resumeContainer {
     width: 45vw;
     height: 68vh;
     margin: 0 4vw 0 1vw;
@@ -373,11 +373,11 @@ span {
     transition: filter 100ms linear;
 }
 
-.resumeContainer:hover {
+#resumeContainer:hover {
     box-shadow: none;
 }
 
-.resumeContainer:hover > #resume {
+#resumeContainer:hover > #resume {
     filter: none;
 }
 
