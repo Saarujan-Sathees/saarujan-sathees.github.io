@@ -167,7 +167,7 @@ async function fetchProjects() {
     });
 
     const data = await req.json();
-    const minOffset = -70000, maxOffset = 2000, range = minOffset - 4200, dir = [ "left", "right" ];
+    const minOffset = -70000, maxOffset = 2000, invRange = 1.0 / (minOffset - 4200.0), dir = [ "left", "right" ];
     const skills = document.createElement("pre"), roadmap = document.getElementById("projectRoadmap");
     skills.classList.add("projectHeader");
     skills.textContent = "Skills";
@@ -223,11 +223,11 @@ async function fetchProjects() {
 
     let percentage = 0, distance;
     queueFrame(() => {
-        percentage = Math.min(1, Math.max(0, projectInfo.offsetTop / projectInfo.range));
-        if (roadmapInView) roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${280 * percentage}px)`;
+        percentage = 90000 * Math.min(1, Math.max(0, projectInfo.offsetTop / projectInfo.range));
+        if (roadmapInView) roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${7 * percentage / 2250}px)`;
         for (let i = 0; i < projects.length; ++i) {
-            distance = offsets[i] + 90000 * percentage;
-            projects[i].style.opacity = Math.min(1, 1 - ((distance - 4200) / range));
+            distance = offsets[i] + percentage;
+            projects[i].style.opacity = Math.min(1, 1 - ((distance - 4200) * invRange));
             projects[i].style.transform = `translateZ(${distance}px)`;
         }
     });
