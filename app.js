@@ -268,6 +268,7 @@ function loadMedia() {
 
 async function loadResume() {
     const res = await fetch(document.getElementById("resumeContainer").href);
+    console.log(await res.text());
     let body = await res.text(), start = body.indexOf("src=\"https://drive.google.com/drive-viewer") + 5;
     document.getElementById("resume").src = body.substring(start, body.indexOf("/>", start) - 1);
 }
