@@ -44,18 +44,18 @@ async function typeTitle() {
 }
 
 async function startingAnimation() {
-    const title = document.getElementById("title"), logo = document.getElementById("logo");
+    const eclipse = document.getElementById("eclipse"), logo = document.getElementById("logo");
     app.style.overflow = "hidden";
-    logo.style.transform = "";
     await sleep(800);
     typeTitle();
     await sleep(3200);
 
     logo.style.animation = "";
+    logo.style.transformOrigin = "top";
     app.style.overflow = "";
-    title.style.animationPlayState = "";
-    title.style.top = "";
-    title.style.paddingTop = "";
+    document.getElementById("title").style.animation = "";
+    eclipse.style.animation = "";
+    eclipse.style.transformOrigin = "";
 }
 
 function setHoverFilter() {
