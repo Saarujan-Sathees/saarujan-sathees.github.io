@@ -94,15 +94,15 @@
 
 @keyframes titleScale {
     0% {
-        transform: scale(0.9375);
+        transform: scale(1);
     }
 
     16% {
-        transform: translateY(-42.5vh) scale(0.5);
+        transform: translateY(-42.5vh) scale(0.53333);
     }
 
     100% {
-        transform: translateY(-42.5vh) scale(0.5);
+        transform: translateY(-42.5vh) scale(0.53333);
     }
 }
 
@@ -187,7 +187,7 @@ html, body {
     margin: 0;
     z-index: 9;
     font-family: "Equinox";
-    font-size: 400%;
+    font-size: 375%;
     color: white;
     text-align: center;
     pointer-events: none;
