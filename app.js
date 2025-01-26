@@ -168,10 +168,15 @@ async function fetchProjects() {
 
     const data = await req.json();
     const minOffset = -70000, maxOffset = 2000, invRange = 1.0 / (minOffset - 4200.0), dir = [ "left", "right" ];
-    const skills = document.createElement("pre"), roadmap = document.getElementById("projectRoadmap");
+    const skills = document.createElement("pre"), roadmap = document.getElementById("projectRoadmap"),
+          border = document.createElement("div"), container = document.createElement("div");
+
     skills.classList.add("projectHeader");
     skills.textContent = "Skills";
+    border.classList.add("projectOutline");
+    container.classList.add("projectContainer");
     projectInfo.range = projectInfo.container.parentElement.clientHeight - projectInfo.container.clientHeight;
+
     let projects = [], offsets = [], langData, tile, title, description, languages;
 
     for (let i = 0; i < data.length; ++i) {
@@ -210,10 +215,12 @@ async function fetchProjects() {
             languages.appendChild(lang);
         }
 
-        tile.appendChild(title);
-        tile.appendChild(description);
-        tile.appendChild(skills.cloneNode(true));
-        tile.appendChild(languages);
+        tile.appendChild(container.cloneNode());
+        tile.lastChild.appendChild(title);
+        tile.lastChild.appendChild(description);
+        tile.lastChild.appendChild(skills.cloneNode(true));
+        tile.lastChild.appendChild(languages);
+        tile.appendChild(border.cloneNode());
         projectInfo.container.appendChild(tile);
         projects.push(tile);
         offsets.push(minOffset + i * offsetDist);
@@ -285,7 +292,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     fetchProjects();
     setHoverFilter()
-    autopauseRayAnimations();
+    //autopauseRayAnimations();
     animateAboutSection();
     requestAnimationFrame(animateFrames);
     await startingAnimation();
