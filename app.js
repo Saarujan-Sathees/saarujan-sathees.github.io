@@ -1,4 +1,4 @@
-let app, scrollTop = 0, cache = null;
+let app, cache = null;
 const ANIMATION_SMOOTHNESS = 100;
 let THRESHOLDS = [], FRAME_ANIMATIONS = [];
 let aboutInfo = { minHeight: 0, range: 1, video: null };
@@ -101,7 +101,7 @@ function animateAboutScroll() {
 
     observer.observe(aboutHeading);
     queueFrame(() => {
-        aboutInfo.video.currentTime = 20 * (scrollTop - aboutInfo.minHeight) / aboutInfo.range;
+        aboutInfo.video.currentTime = 20 * (app.scrollTop - aboutInfo.minHeight) / aboutInfo.range;
     });
 }
 
