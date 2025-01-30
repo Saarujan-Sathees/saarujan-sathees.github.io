@@ -156,12 +156,9 @@ async function fetchProjects() {
     });
 
     let data = await req.json();
-    const skills = document.createElement("pre"), roadmap = document.getElementById("projectRoadmap"),
-          container = document.createElement("div");
-
+    const skills = document.createElement("pre"), roadmap = document.getElementById("projectRoadmap");
     skills.classList.add("projectHeader");
     skills.textContent = "Skills";
-    container.classList.add("projectContainer");
 
     let langData, tile, title, description, languages;
     for (let i = 0; i < data.length; ++i) {
@@ -179,7 +176,7 @@ async function fetchProjects() {
         tile = document.createElement("a");
         tile.href = data[i].html_url;
         tile.classList.add("projectTile");
-        tile.style[dir[i % 2]] = "16vw";
+        tile.style[dir[i % 2]] = "200px";
 
         title = document.createElement("pre");
         title.classList.add("projectName");
@@ -190,8 +187,7 @@ async function fetchProjects() {
         description.textContent = data[i].description;
 
         languages = document.createElement("ul");
-        languages.style.marginTop = "0";
-        languages.style.columns = "2";
+        languages.classList.add("languageList");
         for (let i = 0; i < langData.length; ++i) {
             let lang = document.createElement("li");
             lang.classList.add("projectDescription");
@@ -215,18 +211,17 @@ async function fetchProjects() {
 
                 100% {
                     transform: translateZ(${offset + travelDistance}px);
-                    opacity: 1.25;
+                    opacity: ${2.4 - i / data.length};
                 }
             }    
         `);
 
-        tile.appendChild(container.cloneNode());
         tile.style.animation = `1ms both running project${i}`;
         tile.style.animationTimeline = "--appScroll";
-        tile.lastChild.appendChild(title);
-        tile.lastChild.appendChild(description);
-        tile.lastChild.appendChild(skills.cloneNode(true));
-        tile.lastChild.appendChild(languages);
+        tile.appendChild(title);
+        tile.appendChild(description);
+        tile.appendChild(skills.cloneNode(true));
+        tile.appendChild(languages);
         projectContainer.appendChild(tile);
     }
 

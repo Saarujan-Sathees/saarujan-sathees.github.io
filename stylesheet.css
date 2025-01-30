@@ -324,7 +324,7 @@ section {
     padding: 0;
     font-family: "Gabarito";
     font-weight: 500;
-    font-size: 6vh;
+    font-size: 43.5px;
     color: white;
 }
 
@@ -468,15 +468,16 @@ span {
 
 .projectTile {
     position: absolute;
-    width: 23vw;
-    height: 43vh;
+    width: 350px;
+    height: 340px;
     top: 18vh;
-    padding: 3vh;
+    padding: 44px 0 0 44px;
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
     color: white;
-    box-shadow: inset 0 0 20px 7px rgb(200 130 210 / 65%);
+    background-color: rgb(var(--background-color) / 50%);
+    box-shadow: inset 0 0 20px 2px rgb(200 130 210 / 65%);
     will-change: opacity, transform;
 }
 
@@ -496,7 +497,7 @@ span {
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    padding: 6vh 2vh 3vh 6vh;
+    padding: 5vh 2vh 3vh 5vh;
     background-color: rgb(var(--background-color) / 50%);
     color: white;
 }
@@ -508,27 +509,32 @@ span {
 
 .projectName {
     padding: 0;
-    margin: 0 0 3vh 0;
+    margin: 0 0 20px 0;
     font-family: "Gabarito";
     font-weight: 400;
-    font-size: 4vh;
+    font-size: 32px;
     color: rgb(var(--ray-color));
 }
 
+.languageList {
+    margin-top: 0;
+    columns: 2;
+}
+
 .projectDescription {
-    width: 20vw;
+    width: 21vw;
     font-family: "Gabarito";
-    font-size: 2vh;
-    line-height: 3vh;
+    font-size: 13px;
+    line-height: 28px;
     font-weight: 400;
     color: inherit;
 }
 
 .projectHeader {
-    margin: 4vh 0 1vh 0;
+    margin: 25px 0 8px 0;
     font-family: "Gabarito";
     font-weight: 400;
-    font-size: 3vh;
+    font-size: 25px;
     color: rgb(var(--ray-color));
 }
 
