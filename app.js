@@ -200,21 +200,21 @@ async function fetchProjects() {
             languages.appendChild(lang);
         }
 
-        offsets.push(maxOffset - (data.length - i) * offsetDist);
+        let offset = maxOffset - (data.length - i) * offsetDist;
         addAnimation(`
             @keyframes project${i} {
                 0% {
-                    transform: translateZ(${offsets[i]}px);
+                    transform: translateZ(${offset}px);
                     opacity: ${0.1 + i / data.length};
                 }
 
                 ${112 / 2.55}% {
-                    transform: translateZ(${offsets[i]}px);
+                    transform: translateZ(${offset}px);
                     opacity: ${0.1 + i / data.length};
                 }
 
                 100% {
-                    transform: translateZ(${offsets[i] + travelDistance}px);
+                    transform: translateZ(${offset + travelDistance}px);
                     opacity: 1.25;
                 }
             }    
