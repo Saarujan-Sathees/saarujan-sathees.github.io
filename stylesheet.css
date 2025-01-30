@@ -439,7 +439,6 @@ span {
 #projectsScroller {
     height: 600vh;
     transform: translateZ(0);
-    scroll-timeline-name: --projectScroll;
 }
 
 #projects {
@@ -477,7 +476,8 @@ span {
     overflow: hidden;
     text-decoration: none;
     color: white;
-    transition: all 100ms ease-in-out !important;
+    box-shadow: inset 0 0 20px 7px rgb(200 130 210 / 65%);
+    will-change: opacity, transform;
 }
 
 .projectTile::after {
@@ -492,37 +492,18 @@ span {
     mask-composite: intersect;
 }
 
-.projectOutline {
-    position: absolute;
-    inset: 0;
-    filter: blur(7px);
-    border-radius: 12px;
-}
-
-.projectOutline::after {
-    position: absolute;
-    inset: 0;
-    content: "";
-    background: var(--linGrad) 50%/var(--linGradSize) var(--linGradSize);
-    mask: linear-gradient(hsla(0,0%,100%,0),hsla(0,0%,100%,0)),linear-gradient(hsl(0,0%,100%),hsl(0,0%,100%));
-    border-radius: 12px;
-    border: solid 6px transparent;
-    mask-clip: padding-box, border-box;
-    mask-composite: intersect;
-}
-
 .projectContainer {
     position: absolute;
-    inset: 2vh;
-    border-radius: 5px;
-    padding: 4vh 2vh 3vh 4vh;
+    inset: 0;
+    border-radius: 12px;
+    padding: 6vh 2vh 3vh 6vh;
     background-color: rgb(var(--background-color) / 50%);
     color: white;
 }
 
 .projectTile:hover > .projectContainer {
     color: rgb(var(--background-color));
-    background-color: rgb(var(--glow-color) / 80%);
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 .projectName {

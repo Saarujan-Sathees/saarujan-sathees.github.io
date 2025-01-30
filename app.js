@@ -2,7 +2,7 @@ let app, scrollTop = 0, cache = null;
 const ANIMATION_SMOOTHNESS = 100;
 let THRESHOLDS = [], FRAME_ANIMATIONS = [];
 let aboutInfo = { minHeight: 0, range: 1, video: null };
-let projectInfo = { range: 1, offsetTop: 0, container: null };
+let projectContainer = null;
 
 function sleep(ms) {
     return new Promise(r => setTimeout(r, ms));
@@ -139,52 +139,37 @@ function initThresholds() {
     }
 }
 
-let roadmapInView = false;
-async function animateProjectRoadmap() {
-    const roadmap = document.getElementById("projectRoadmap");
-    const viewSize = 0.4;
-
-    let observer = new IntersectionObserver(events => {
-        if (projectInfo.offsetTop > 3000) return;
-
-        for (let i = 0; i < events.length; ++i) {
-            roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${280 * (1 - events[i].intersectionRatio / viewSize)}px)`;
-            if (events[i].intersectionRatio >= viewSize) 
-                roadmapInView = true;
-            else 
-                roadmapInView = false;
-        }
-    }, { root: app, rootMargin: `0px 0px -${(1 - viewSize) * 100}% 0px`, threshold: THRESHOLDS });
-
-    observer.observe(projectInfo.container);    
+let dynamicKeyframes = null;
+function addAnimation(body) {
+    if (!dynamicKeyframes) {
+        dynamicKeyframes = document.createElement('style');
+        document.head.appendChild(dynamicKeyframes);
+    }
+  
+    dynamicKeyframes.sheet.insertRule(body, dynamicKeyframes.length);
 }
 
 async function fetchProjects() {
-    animateProjectRoadmap();
     const b = "thub_pat_11AULLZYY0h3bFX2xI4K1x_seE9z5VFQ1oGsHosCCfkjnUPasYs5JVDl5DsKWcbzaWMOJZPCKE4QZA9J3L";
     const req = await fetch("https://api.github.com/users/Saarujan-Sathees/repos", { 
         headers: { "User-Agent": "saarujan-sathees.github.io", "Authorization": `gi${b}` }
     });
 
-    const data = await req.json();
-    const minOffset = -70000, maxOffset = 2000, invRange = 1.0 / (minOffset - 4200.0), dir = [ "left", "right" ];
+    let data = await req.json();
     const skills = document.createElement("pre"), roadmap = document.getElementById("projectRoadmap"),
-          border = document.createElement("div"), container = document.createElement("div");
+          container = document.createElement("div");
 
     skills.classList.add("projectHeader");
     skills.textContent = "Skills";
-    border.classList.add("projectOutline");
     container.classList.add("projectContainer");
-    projectInfo.range = projectInfo.container.parentElement.clientHeight - projectInfo.container.clientHeight;
 
-    let projects = [], offsets = [], langData, tile, title, description, languages;
-
+    let langData, tile, title, description, languages;
     for (let i = 0; i < data.length; ++i) {
         if (data[i].name == "Saarujan-Sathees") data.splice(i, 1);
         if (data[i].name == "saarujan-sathees.github.io") data[i].name = "Portfolio Website";
     }
 
-    const offsetDist = (maxOffset - minOffset) / data.length;
+    const maxOffset = 10000, offsetDist = 10000, travelDistance = offsetDist * data.length + 0.8 * maxOffset, dir = [ "left", "right" ];
     for (let i = 0; i < data.length; ++i) {
         let langReq = await fetch(data[i].languages_url, { 
             headers: { "User-Agent": "saarujan-sathees.github.io", "Authorization": `gi${b}` }
@@ -215,48 +200,58 @@ async function fetchProjects() {
             languages.appendChild(lang);
         }
 
+        offsets.push(maxOffset - (data.length - i) * offsetDist);
+        addAnimation(`
+            @keyframes project${i} {
+                0% {
+                    transform: translateZ(${offsets[i]}px);
+                    opacity: ${0.1 + i / data.length};
+                }
+
+                ${112 / 2.55}% {
+                    transform: translateZ(${offsets[i]}px);
+                    opacity: ${0.1 + i / data.length};
+                }
+
+                100% {
+                    transform: translateZ(${offsets[i] + travelDistance}px);
+                    opacity: 1.25;
+                }
+            }    
+        `);
+
         tile.appendChild(container.cloneNode());
+        tile.style.animation = `1ms both running project${i}`;
+        tile.style.animationTimeline = "--appScroll";
         tile.lastChild.appendChild(title);
         tile.lastChild.appendChild(description);
         tile.lastChild.appendChild(skills.cloneNode(true));
         tile.lastChild.appendChild(languages);
-        tile.appendChild(border.cloneNode());
-        projectInfo.container.appendChild(tile);
-        projects.push(tile);
-        offsets.push(minOffset + i * offsetDist);
-
-        await sleep(400);
+        projectContainer.appendChild(tile);
     }
 
-    let percentage = 0, distance;
-    queueFrame(() => {
-        percentage = 90000 * Math.min(1, Math.max(0, projectInfo.offsetTop / projectInfo.range));
-        if (roadmapInView) roadmap.style.transform = `rotateX(90deg) scaleY(200) translateY(${7 * percentage / 2250}px)`;
-        for (let i = 0; i < projects.length; ++i) {
-            distance = offsets[i] + percentage;
-            projects[i].style.opacity = Math.min(1, 1 - ((distance - 4200) * invRange));
-            projects[i].style.transform = `translateZ(${distance}px)`;
-        }
-    });
-}
-
-function autopauseRayAnimations() {
-    let elements = document.getElementById("eclipse").children;
-    let observer = new IntersectionObserver(events => {
-        for (let i = 0; i < events.length; ++i) {
-            if (events[i].intersectionRatio < 0.01) {
-                for (let j = 0; j < elements.length; ++j) {
-                    elements[j].style.animationPlayState = "paused";
-                }
-            } else {
-                for (let j = 0; j < elements.length; ++j) {
-                    elements[j].style.animationPlayState = "";
-                }
+    addAnimation(`
+        @keyframes projectRoadmap {
+            0% {
+                transform: rotateX(90deg) scaleY(200) translate3d(0, 280px, 40px);
             }
-        }
-    }, { threshold: [0.005, 0.015] });
 
-    observer.observe(elements[0].parentElement);
+            ${102 / 2.55}% {
+                transform: rotateX(90deg) scaleY(200) translate3d(0, 280px, 40px);
+            }
+
+            ${112 / 2.55}% {
+                transform: rotateX(90deg) scaleY(200) translate3d(0, 0, 40px);
+            }
+
+            100% {
+                transform: rotateX(90deg) scaleY(200) translate3d(0, 280px, 40px);
+            }
+        }  
+    `);
+
+    roadmap.style.animation = `1ms both running projectRoadmap`;
+    roadmap.style.animationTimeline = "--appScroll";
 }
 
 function loadMedia() {
@@ -284,15 +279,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     loadResume();
     initThresholds();
     app = document.getElementById("app");
-    projectInfo.container = document.getElementById("projects");
-    app.addEventListener("scroll", ev => {
-        scrollTop = app.scrollTop;
-        projectInfo.offsetTop = projectInfo.container.offsetTop;
-    }, { passive: true });
-    
+    projectContainer = document.getElementById("projects");
     fetchProjects();
     setHoverFilter()
-    //autopauseRayAnimations();
     animateAboutSection();
     requestAnimationFrame(animateFrames);
     await startingAnimation();
