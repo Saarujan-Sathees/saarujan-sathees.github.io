@@ -150,6 +150,7 @@ function addAnimation(body) {
 }
 
 async function fetchProjects() {
+    const isLandscape = screen.orientation.type.startsWith("landscape");
     const b = "thub_pat_11AULLZYY0h3bFX2xI4K1x_seE9z5VFQ1oGsHosCCfkjnUPasYs5JVDl5DsKWcbzaWMOJZPCKE4QZA9J3L";
     const req = await fetch("https://api.github.com/users/Saarujan-Sathees/repos", { 
         headers: { "User-Agent": "saarujan-sathees.github.io", "Authorization": `gi${b}` }
@@ -166,7 +167,8 @@ async function fetchProjects() {
         if (data[i].name == "saarujan-sathees.github.io") data[i].name = "Portfolio Website";
     }
 
-    const maxOffset = 10000, offsetDist = 10000, travelDistance = offsetDist * data.length + 0.8 * maxOffset, dir = [ "left", "right" ];
+    const maxOffset = isLandscape ? 10000 : 20000, offsetDist = isLandscape ? 10000 : 20000, 
+          travelDistance = offsetDist * data.length + 0.8 * maxOffset, dir =[ "left", "right" ];
     for (let i = 0; i < data.length; ++i) {
         let langReq = await fetch(data[i].languages_url, { 
             headers: { "User-Agent": "saarujan-sathees.github.io", "Authorization": `gi${b}` }
@@ -176,7 +178,7 @@ async function fetchProjects() {
         tile = document.createElement("a");
         tile.href = data[i].html_url;
         tile.classList.add("projectTile");
-        tile.style[dir[i % 2]] = "200px";
+        if (isLandscape) tile.style[dir[i % 2]] = "200px";
 
         title = document.createElement("pre");
         title.classList.add("projectName");
@@ -228,11 +230,11 @@ async function fetchProjects() {
     addAnimation(`
         @keyframes projectRoadmap {
             0% {
-                transform: rotateX(90deg) scaleY(200) translate3d(0, 280px, 40px);
+                transform: rotateX(90deg) scaleY(200) translate3d(0, ${isLandscape ? 280 : 350}px, 40px);
             }
 
             ${102 / 2.55}% {
-                transform: rotateX(90deg) scaleY(200) translate3d(0, 280px, 40px);
+                transform: rotateX(90deg) scaleY(200) translate3d(0, ${isLandscape ? 280 : 350}px, 40px);
             }
 
             ${112 / 2.55}% {
@@ -240,7 +242,7 @@ async function fetchProjects() {
             }
 
             100% {
-                transform: rotateX(90deg) scaleY(200) translate3d(0, 280px, 40px);
+                transform: rotateX(90deg) scaleY(200) translate3d(0, ${isLandscape ? 280 : 350}px, 40px);
             }
         }  
     `);
@@ -263,6 +265,16 @@ function loadMedia() {
     }
 }
 
+function orientIcons() {
+    if (screen.orientation.type.startsWith("portrait")) {
+        let icons = document.getElementById("links").children;
+        for (let i = 0; i < icons.length; ++i) {
+            icons[i].firstElementChild.height = 15;
+            icons[i].firstElementChild.width = 15;
+        }
+    }
+}
+
 async function loadResume() {
     const res = await fetch(document.getElementById("resumeContainer").href);
     let body = await res.text(), start = body.indexOf("src=\"https://drive.google.com/drive-viewer") + 5;
@@ -270,6 +282,7 @@ async function loadResume() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+    orientIcons();
     loadMedia();
     loadResume();
     initThresholds();
